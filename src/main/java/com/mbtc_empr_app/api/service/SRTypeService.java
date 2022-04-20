@@ -17,10 +17,10 @@ public class SRTypeService {
     private  SRTypeRepository SRTypeRepository;
 
     public List<SRTypeDTO> getSRTypes() {
-		return this.DepDTOListConvertsion(this.SRTypeRepository.findAll());
+		return this.SRTypeDTOListConvertsion(this.SRTypeRepository.findAll());
 	}
 
-    public SRTypeDTO DepDTOConvertsion(SRType SRType){
+    public SRTypeDTO SRTypeDTOConvertsion(SRType SRType){
 		SRTypeDTO SRTypeDTO = new SRTypeDTO();
         SRTypeDTO.SRTypeID = SRType.getSRTypeID();
         SRTypeDTO.SRType = SRType.getSRType();
@@ -29,11 +29,11 @@ public class SRTypeService {
 		return SRTypeDTO;
 	}
 
-	public List<SRTypeDTO> DepDTOListConvertsion(List<SRType> SRTypes){
-		return SRTypes.stream().map(SRType -> DepDTOConvertsion(SRType)).collect(Collectors.toList());
+	public List<SRTypeDTO> SRTypeDTOListConvertsion(List<SRType> SRTypes){
+		return SRTypes.stream().map(SRType -> SRTypeDTOConvertsion(SRType)).collect(Collectors.toList());
 	}
 
-	public SRType DepEntityConvertsion(SRTypeDTO SRTypeDTO){
+	public SRType SRTypeEntityConvertsion(SRTypeDTO SRTypeDTO){
 		SRType SRType = new SRType();
         SRType.setSRTypeID(SRTypeDTO.SRTypeID);
         SRType.setSRType(SRTypeDTO.SRType);
@@ -42,8 +42,8 @@ public class SRTypeService {
 		return SRType;
 	}
 
-	public List<SRType> DepEntityListConvertsion(List<SRTypeDTO> SRTypesDTO){
-		return SRTypesDTO.stream().map(SRTypeDTO -> DepEntityConvertsion(SRTypeDTO)).collect(Collectors.toList());
+	public List<SRType> SRTypeEntityListConvertsion(List<SRTypeDTO> SRTypesDTO){
+		return SRTypesDTO.stream().map(SRTypeDTO -> SRTypeEntityConvertsion(SRTypeDTO)).collect(Collectors.toList());
 	}
 
 }

@@ -17,10 +17,10 @@ public class AssignmentTypeService {
     private  AssignmentTypeRepository AssignmentTypeRepository;
 
     public List<AssignmentTypeDTO> getAssignmentTypes() {
-		return this.DepDTOListConvertsion(this.AssignmentTypeRepository.findAll());
+		return this.AssigTypeDTOListConvertsion(this.AssignmentTypeRepository.findAll());
 	}
 
-    public AssignmentTypeDTO DepDTOConvertsion(AssignmentType AssignmentType){
+    public AssignmentTypeDTO AssigTypeDTOConvertsion(AssignmentType AssignmentType){
 		AssignmentTypeDTO AssignmentTypeDTO = new AssignmentTypeDTO();
         AssignmentTypeDTO.AssignmentTypeID = AssignmentType.getAssignmentTypeID();
         AssignmentTypeDTO.AssignmentType = AssignmentType.getAssignmentType();
@@ -29,11 +29,11 @@ public class AssignmentTypeService {
 		return AssignmentTypeDTO;
 	}
 
-	public List<AssignmentTypeDTO> DepDTOListConvertsion(List<AssignmentType> AssignmentTypes){
-		return AssignmentTypes.stream().map(AssignmentType -> DepDTOConvertsion(AssignmentType)).collect(Collectors.toList());
+	public List<AssignmentTypeDTO> AssigTypeDTOListConvertsion(List<AssignmentType> AssignmentTypes){
+		return AssignmentTypes.stream().map(AssignmentType ->AssigTypeDTOConvertsion(AssignmentType)).collect(Collectors.toList());
 	}
 
-	public AssignmentType DepEntityConvertsion(AssignmentTypeDTO AssignmentTypeDTO){
+	public AssignmentType AssigTypeEntityConvertsion(AssignmentTypeDTO AssignmentTypeDTO){
 		AssignmentType AssignmentType = new AssignmentType();
         AssignmentType.setAssignmentTypeID(AssignmentTypeDTO.AssignmentTypeID);
         AssignmentType.setAssignmentType(AssignmentTypeDTO.AssignmentType);
@@ -42,8 +42,8 @@ public class AssignmentTypeService {
 		return AssignmentType;
 	}
 
-	public List<AssignmentType> DepEntityListConvertsion(List<AssignmentTypeDTO> AssignmentTypesDTO){
-		return AssignmentTypesDTO.stream().map(AssignmentTypeDTO -> DepEntityConvertsion(AssignmentTypeDTO)).collect(Collectors.toList());
+	public List<AssignmentType> AssigTypeEntityListConvertsion(List<AssignmentTypeDTO> AssignmentTypesDTO){
+		return AssignmentTypesDTO.stream().map(AssignmentTypeDTO -> AssigTypeEntityConvertsion(AssignmentTypeDTO)).collect(Collectors.toList());
 	}
 
 }
