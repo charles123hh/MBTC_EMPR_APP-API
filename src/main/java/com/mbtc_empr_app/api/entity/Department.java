@@ -37,7 +37,7 @@ public class Department {
     public String getDepartmentName(){
         return this.DepartmentName;
     }
-    public void setDeparmentName(String departmentName){
+    public void setDepartmentName(String departmentName){
         this.DepartmentName = departmentName;
     }
 

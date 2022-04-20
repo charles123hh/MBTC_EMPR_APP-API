@@ -36,7 +36,7 @@ public class DepartmentService {
 	public Department DepEntityConvertsion(DepartmentDTO departmentDTO){
 		Department department = new Department();
         department.setDepartmentID(departmentDTO.DepartmentID);
-        department.setDeparmentName(departmentDTO.DepartmentName);
+        department.setDepartmentName(departmentDTO.DepartmentName);
         department.setDateCreated(departmentDTO.DateCreated);
         department.setCreatedBy(departmentDTO.CreatedBy);
 		return department;
