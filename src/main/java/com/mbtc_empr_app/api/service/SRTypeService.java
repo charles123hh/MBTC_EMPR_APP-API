@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class SRTypeService {
 
     @Autowired 
-    private  SRTypeRepository srTypeRepository;
+    private SRTypeRepository srTypeRepository;
 
     public List<SRTypeDTO> getSRTypes() {
 		return this.SRTypeDTOListConvertsion(this.srTypeRepository.findAll());
@@ -32,7 +32,6 @@ public class SRTypeService {
 	public List<SRTypeDTO> SRTypeDTOListConvertsion(List<SRType> SRTypes){
 		return SRTypes.stream().map(SRType -> SRTypeDTOConvertsion(SRType)).collect(Collectors.toList());
 	}
-
 	public SRType SRTypeEntityConvertsion(SRTypeDTO SRTypeDTO){
 		SRType SRType = new SRType();
         SRType.setSRTypeID(SRTypeDTO.SRTypeID);
@@ -41,7 +40,6 @@ public class SRTypeService {
         SRType.setCreatedBy(SRTypeDTO.CreatedBy);
 		return SRType;
 	}
-
 	public List<SRType> SRTypeEntityListConvertsion(List<SRTypeDTO> SRTypesDTO){
 		return SRTypesDTO.stream().map(SRTypeDTO -> SRTypeEntityConvertsion(SRTypeDTO)).collect(Collectors.toList());
 	}

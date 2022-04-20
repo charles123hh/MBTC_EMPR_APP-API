@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class DepartmentService {
 
     @Autowired 
-    private  DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository;
 
     public List<DepartmentDTO> getDepartments() {
 		return this.DepDTOListConvertsion(this.departmentRepository.findAll());

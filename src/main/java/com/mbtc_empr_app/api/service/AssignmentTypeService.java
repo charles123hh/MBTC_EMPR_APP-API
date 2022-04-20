@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class AssignmentTypeService {
 
     @Autowired 
-    private  AssignmentTypeRepository assignmentTypeRepository;
+    private AssignmentTypeRepository assignmentTypeRepository;
 
     public List<AssignmentTypeDTO> getAssignmentTypes() {
 		return this.AssigTypeDTOListConvertsion(this.assignmentTypeRepository.findAll());
@@ -28,11 +28,10 @@ public class AssignmentTypeService {
         AssignmentTypeDTO.CreatedBy = AssignmentType.getCreatedBy();
 		return AssignmentTypeDTO;
 	}
-
 	public List<AssignmentTypeDTO> AssigTypeDTOListConvertsion(List<AssignmentType> AssignmentTypes){
 		return AssignmentTypes.stream().map(AssignmentType ->AssigTypeDTOConvertsion(AssignmentType)).collect(Collectors.toList());
 	}
-
+	
 	public AssignmentType AssigTypeEntityConvertsion(AssignmentTypeDTO AssignmentTypeDTO){
 		AssignmentType AssignmentType = new AssignmentType();
         AssignmentType.setAssignmentTypeID(AssignmentTypeDTO.AssignmentTypeID);
@@ -41,7 +40,6 @@ public class AssignmentTypeService {
         AssignmentType.setCreatedBy(AssignmentTypeDTO.CreatedBy);
 		return AssignmentType;
 	}
-
 	public List<AssignmentType> AssigTypeEntityListConvertsion(List<AssignmentTypeDTO> AssignmentTypesDTO){
 		return AssignmentTypesDTO.stream().map(AssignmentTypeDTO -> AssigTypeEntityConvertsion(AssignmentTypeDTO)).collect(Collectors.toList());
 	}
