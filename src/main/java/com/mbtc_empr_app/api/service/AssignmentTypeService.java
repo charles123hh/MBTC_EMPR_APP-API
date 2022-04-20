@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 public class AssignmentTypeService {
 
     @Autowired 
-    private  AssignmentTypeRepository AssignmentTypeRepository;
+    private  AssignmentTypeRepository assignmentTypeRepository;
 
     public List<AssignmentTypeDTO> getAssignmentTypes() {
-		return this.AssigTypeDTOListConvertsion(this.AssignmentTypeRepository.findAll());
+		return this.AssigTypeDTOListConvertsion(this.assignmentTypeRepository.findAll());
 	}
 
     public AssignmentTypeDTO AssigTypeDTOConvertsion(AssignmentType AssignmentType){

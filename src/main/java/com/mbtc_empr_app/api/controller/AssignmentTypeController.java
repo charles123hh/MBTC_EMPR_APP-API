@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AssignmentTypeController {
 
     @Autowired
-    private AssignmentTypeService AssignmentTypeService;
+    private AssignmentTypeService assignmentTypeService;
 
     @GetMapping
 	public List<AssignmentTypeDTO> fetchAssignmentTypes() {
-		return this.AssignmentTypeService.getAssignmentTypes();
+		return this.assignmentTypeService.getAssignmentTypes();
 	}
 
 }

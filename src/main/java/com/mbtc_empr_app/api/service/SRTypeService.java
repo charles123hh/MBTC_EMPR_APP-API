@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 public class SRTypeService {
 
     @Autowired 
-    private  SRTypeRepository SRTypeRepository;
+    private  SRTypeRepository srTypeRepository;
 
     public List<SRTypeDTO> getSRTypes() {
-		return this.SRTypeDTOListConvertsion(this.SRTypeRepository.findAll());
+		return this.SRTypeDTOListConvertsion(this.srTypeRepository.findAll());
 	}
 
     public SRTypeDTO SRTypeDTOConvertsion(SRType SRType){

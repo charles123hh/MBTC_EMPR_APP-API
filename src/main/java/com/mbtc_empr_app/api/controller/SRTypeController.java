@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SRTypeController {
 
     @Autowired
-    private SRTypeService SRTypeService;
+    private SRTypeService srTypeService;
 
     @GetMapping
 	public List<SRTypeDTO> fetchSRTypes() {
-		return this.SRTypeService.getSRTypes();
+		return this.srTypeService.getSRTypes();
 	}
 
 }
