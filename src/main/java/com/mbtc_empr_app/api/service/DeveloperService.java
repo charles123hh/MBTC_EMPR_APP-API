@@ -23,8 +23,22 @@ public class DeveloperService {
       return this.DevDTOListConversion(this.developerRepository.findAll());
     }
 
+    public DeveloperDTO getDeveloper(Integer developerID) { 
+      if(developerID <= 0) throw new IllegalStateException("Invalid id " + developerID);
+      DeveloperDTO foundDeveloperDTO = DevDTOConversion(this.developerRepository.findById(developerID).orElseThrow(
+        () -> new IllegalStateException("Developer with id " + developerID + " does not exist")
+      ));
+      return foundDeveloperDTO;
+    }
+
     public void saveDeveloper(DeveloperDTO developerDTO){
       this.developerRepository.save(DevEntityConversion(developerDTO));
+    }
+
+    public void deleteDeveloper(Integer developerID) { 
+      DeveloperDTO foundDeveloperDTO = this.getDeveloper(developerID);
+      foundDeveloperDTO.IsActive = 0;
+      this.saveDeveloper(foundDeveloperDTO);
     }
 
     public DeveloperDTO DevDTOConversion(Developer developer){
@@ -35,7 +49,7 @@ public class DeveloperService {
       developerDTO.MiddleName = developer.getMiddleName();
       developerDTO.LastName = developer.getLastName();
       developerDTO.DateHire = developer.getDateHire();
-      developerDTO.isActive = developer.getIsActive();
+      developerDTO.IsActive = developer.getIsActive();
       developerDTO.MetrobankEmail = developer.getMetrobankEmail();
       developerDTO.HomeAddress = developer.getHomeAddress();
       developerDTO.CityProvince = developer.getCityProvince();
@@ -64,7 +78,7 @@ public class DeveloperService {
       developer.setMiddleName(developerDTO.MiddleName);
       developer.setLastName(developerDTO.LastName);
       developer.setDateHire(developerDTO.DateHire);
-      developer.setIsActive(developerDTO.isActive);
+      developer.setIsActive(developerDTO.IsActive);
       developer.setMetrobankEmail(developerDTO.MetrobankEmail);
       developer.setHomeAddress(developerDTO.HomeAddress);
       developer.setCityProvince(developerDTO.CityProvince);

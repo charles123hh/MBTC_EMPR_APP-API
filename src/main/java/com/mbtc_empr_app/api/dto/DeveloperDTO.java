@@ -12,7 +12,7 @@ public class DeveloperDTO {
     public String MiddleName;
     public String LastName;
     public LocalDate DateHire;
-    public Byte isActive;
+    public Byte IsActive;
     public String MetrobankEmail;
     public String HomeAddress;
     public String CityProvince;
