@@ -81,8 +81,8 @@ public class ServiceRequest {
     public Integer getSRTypeID(){
         return this.SRTypeID;
     }
-    public void setSRTypeID(Integer SRTypeID){
-        this.SRTypeID = SRTypeID;
+    public void setSRTypeID(Integer srTypeID){
+        this.SRTypeID = srTypeID;
     }
 
     public SRType getSRType(){

@@ -26,7 +26,7 @@ public class ServiceRequestService {
 
     public ServiceRequestDTO getServiceRequest(Integer serviceRequestID) { 
         if(serviceRequestID <= 0) throw new IllegalStateException("Invalid id " + serviceRequestID);
-        ServiceRequestDTO foundServiceRequestDTO = SRDTOConvertsion(this.serviceRequestRepository.findById(serviceRequestID).orElseThrow(
+        ServiceRequestDTO foundServiceRequestDTO = SRDTOConversion(this.serviceRequestRepository.findById(serviceRequestID).orElseThrow(
             () -> new IllegalStateException("Service Request with id " + serviceRequestID + " does not exist")
         ));
         return foundServiceRequestDTO;
@@ -36,7 +36,25 @@ public class ServiceRequestService {
         this.serviceRequestRepository.save(SREntityConversion(serviceRequestDTO));
     }
 
-    public ServiceRequestDTO SRDTOConvertsion(ServiceRequest serviceRequest){
+    public void updateServiceRequest(Integer serviceRequestID, ServiceRequestDTO serviceRequestDTO){
+        ServiceRequest foundServiceRequest = this.SREntityConversion(this.getServiceRequest(serviceRequestID));
+        foundServiceRequest.setSRNo(serviceRequestDTO.SRNo);
+        foundServiceRequest.setTitle(serviceRequestDTO.Title);
+        foundServiceRequest.setDescription(serviceRequestDTO.Description);
+        foundServiceRequest.setStatus(serviceRequestDTO.Status);
+        foundServiceRequest.setTargetYear(serviceRequestDTO.TargetYear);
+        foundServiceRequest.setDateModified(serviceRequestDTO.DateModified);
+        foundServiceRequest.setModifiedBy(serviceRequestDTO.ModifiedBy);
+        this.saveServiceRequest(this.SRDTOConversion(foundServiceRequest));
+    }
+
+    public void deleteServiceRequest(Integer serviceRequestID) { 
+        ServiceRequestDTO foundServiceRequestDTO = this.getServiceRequest(serviceRequestID);
+        foundServiceRequestDTO.Status = "In-Active";
+        this.saveServiceRequest(foundServiceRequestDTO);
+    }
+
+    public ServiceRequestDTO SRDTOConversion(ServiceRequest serviceRequest){
 		ServiceRequestDTO serviceRequestDTO = new ServiceRequestDTO();
         serviceRequestDTO.ServiceRequestID = serviceRequest.getServiceRequestID();
         serviceRequestDTO.SRNo = serviceRequest.getSRNo();
@@ -44,6 +62,7 @@ public class ServiceRequestService {
         serviceRequestDTO.Description = serviceRequest.getDescription();
         serviceRequestDTO.Status = serviceRequest.getStatus();
         serviceRequestDTO.TargetYear = serviceRequest.getTargetYear();
+        serviceRequestDTO.SRTypeID = serviceRequest.getSRTypeID();
         serviceRequestDTO.DateModified = serviceRequest.getDateModified();
         serviceRequestDTO.ModifiedBy = serviceRequest.getModifiedBy();
         serviceRequestDTO.DateCreated = serviceRequest.getDateCreated();
@@ -53,7 +72,7 @@ public class ServiceRequestService {
 		return serviceRequestDTO;
 	}
 	public List<ServiceRequestDTO> SRDTOListConvertsion(List<ServiceRequest> ServiceRequests){
-		return ServiceRequests.stream().map(serviceRequest -> SRDTOConvertsion(serviceRequest)).collect(Collectors.toList());
+		return ServiceRequests.stream().map(serviceRequest -> SRDTOConversion(serviceRequest)).collect(Collectors.toList());
 	}
 
     public ServiceRequest SREntityConversion(ServiceRequestDTO serviceRequestDTO){
