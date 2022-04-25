@@ -20,28 +20,28 @@ public class SRTypeService {
 		return this.SRTypeDTOListConvertsion(this.srTypeRepository.findAll());
 	}
 
-    public SRTypeDTO SRTypeDTOConvertsion(SRType SRType){
-		SRTypeDTO SRTypeDTO = new SRTypeDTO();
-        SRTypeDTO.SRTypeID = SRType.getSRTypeID();
-        SRTypeDTO.SRType = SRType.getSRType();
-        SRTypeDTO.DateCreated = SRType.getDateCreated();
-        SRTypeDTO.CreatedBy = SRType.getCreatedBy();
-		return SRTypeDTO;
+    public SRTypeDTO SRTypeDTOConvertsion(SRType srType){
+		SRTypeDTO srTypeDTO = new SRTypeDTO();
+        srTypeDTO.SRTypeID = srType.getSRTypeID();
+        srTypeDTO.SRType = srType.getSRType();
+        srTypeDTO.DateCreated = srType.getDateCreated();
+        srTypeDTO.CreatedBy = srType.getCreatedBy();
+		return srTypeDTO;
 	}
 
-	public List<SRTypeDTO> SRTypeDTOListConvertsion(List<SRType> SRTypes){
-		return SRTypes.stream().map(SRType -> SRTypeDTOConvertsion(SRType)).collect(Collectors.toList());
+	public List<SRTypeDTO> SRTypeDTOListConvertsion(List<SRType> srTypes){
+		return srTypes.stream().map(srType -> SRTypeDTOConvertsion(srType)).collect(Collectors.toList());
 	}
-	public SRType SRTypeEntityConvertsion(SRTypeDTO SRTypeDTO){
-		SRType SRType = new SRType();
-        SRType.setSRTypeID(SRTypeDTO.SRTypeID);
-        SRType.setSRType(SRTypeDTO.SRType);
-        SRType.setDateCreated(SRTypeDTO.DateCreated);
-        SRType.setCreatedBy(SRTypeDTO.CreatedBy);
-		return SRType;
+	public SRType SRTypeEntityConvertsion(SRTypeDTO srTypeDTO){
+		SRType srType = new SRType();
+        srType.setSRTypeID(srTypeDTO.SRTypeID);
+        srType.setSRType(srTypeDTO.SRType);
+        srType.setDateCreated(srTypeDTO.DateCreated);
+        srType.setCreatedBy(srTypeDTO.CreatedBy);
+		return srType;
 	}
-	public List<SRType> SRTypeEntityListConvertsion(List<SRTypeDTO> SRTypesDTO){
-		return SRTypesDTO.stream().map(SRTypeDTO -> SRTypeEntityConvertsion(SRTypeDTO)).collect(Collectors.toList());
+	public List<SRType> SRTypeEntityListConvertsion(List<SRTypeDTO> srTypesDTO){
+		return srTypesDTO.stream().map(srTypeDTO -> SRTypeEntityConvertsion(srTypeDTO)).collect(Collectors.toList());
 	}
 
 }

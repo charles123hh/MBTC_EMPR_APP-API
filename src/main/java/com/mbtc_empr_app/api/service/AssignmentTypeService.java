@@ -20,28 +20,28 @@ public class AssignmentTypeService {
 		return this.AssigTypeDTOListConvertsion(this.assignmentTypeRepository.findAll());
 	}
 
-    public AssignmentTypeDTO AssigTypeDTOConvertsion(AssignmentType AssignmentType){
-		AssignmentTypeDTO AssignmentTypeDTO = new AssignmentTypeDTO();
-        AssignmentTypeDTO.AssignmentTypeID = AssignmentType.getAssignmentTypeID();
-        AssignmentTypeDTO.AssignmentType = AssignmentType.getAssignmentType();
-        AssignmentTypeDTO.DateCreated = AssignmentType.getDateCreated();
-        AssignmentTypeDTO.CreatedBy = AssignmentType.getCreatedBy();
-		return AssignmentTypeDTO;
+    public AssignmentTypeDTO AssigTypeDTOConvertsion(AssignmentType assignmentType){
+		AssignmentTypeDTO assignmentTypeDTO = new AssignmentTypeDTO();
+        assignmentTypeDTO.AssignmentTypeID = assignmentType.getAssignmentTypeID();
+        assignmentTypeDTO.AssignmentType = assignmentType.getAssignmentType();
+        assignmentTypeDTO.DateCreated = assignmentType.getDateCreated();
+        assignmentTypeDTO.CreatedBy = assignmentType.getCreatedBy();
+		return assignmentTypeDTO;
 	}
-	public List<AssignmentTypeDTO> AssigTypeDTOListConvertsion(List<AssignmentType> AssignmentTypes){
-		return AssignmentTypes.stream().map(AssignmentType ->AssigTypeDTOConvertsion(AssignmentType)).collect(Collectors.toList());
+	public List<AssignmentTypeDTO> AssigTypeDTOListConvertsion(List<AssignmentType> assignmentTypes){
+		return assignmentTypes.stream().map(assignmentType ->AssigTypeDTOConvertsion(assignmentType)).collect(Collectors.toList());
 	}
 	
-	public AssignmentType AssigTypeEntityConvertsion(AssignmentTypeDTO AssignmentTypeDTO){
-		AssignmentType AssignmentType = new AssignmentType();
-        AssignmentType.setAssignmentTypeID(AssignmentTypeDTO.AssignmentTypeID);
-        AssignmentType.setAssignmentType(AssignmentTypeDTO.AssignmentType);
-        AssignmentType.setDateCreated(AssignmentTypeDTO.DateCreated);
-        AssignmentType.setCreatedBy(AssignmentTypeDTO.CreatedBy);
-		return AssignmentType;
+	public AssignmentType AssigTypeEntityConvertsion(AssignmentTypeDTO assignmentTypeDTO){
+		AssignmentType assignmentType = new AssignmentType();
+        assignmentType.setAssignmentTypeID(assignmentTypeDTO.AssignmentTypeID);
+        assignmentType.setAssignmentType(assignmentTypeDTO.AssignmentType);
+        assignmentType.setDateCreated(assignmentTypeDTO.DateCreated);
+        assignmentType.setCreatedBy(assignmentTypeDTO.CreatedBy);
+		return assignmentType;
 	}
-	public List<AssignmentType> AssigTypeEntityListConvertsion(List<AssignmentTypeDTO> AssignmentTypesDTO){
-		return AssignmentTypesDTO.stream().map(AssignmentTypeDTO -> AssigTypeEntityConvertsion(AssignmentTypeDTO)).collect(Collectors.toList());
+	public List<AssignmentType> AssigTypeEntityListConvertsion(List<AssignmentTypeDTO> assignmentTypesDTO){
+		return assignmentTypesDTO.stream().map(assignmentTypeDTO -> AssigTypeEntityConvertsion(assignmentTypeDTO)).collect(Collectors.toList());
 	}
 
 }
