@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class DeveloperDTO {
+    
+    @JsonProperty(access = Access.READ_ONLY)
     public Integer DeveloperID;
+    
     public String EmployeeID;
     public String FirstName;
     public String MiddleName;

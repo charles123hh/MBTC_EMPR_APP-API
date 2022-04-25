@@ -32,14 +32,14 @@ public class DeveloperController {
 		return this.developerService.getDeveloper(developerID);
 	}
 
-    @PostMapping
+    @PostMapping()
     public void createDeveloper(@RequestBody DeveloperDTO developerDTO){
         this.developerService.saveDeveloper(developerDTO);
     }
     
     @PutMapping(path = "/{developerID}")
     public void editDeveloper(@PathVariable("developerID") Integer developerID, @RequestBody DeveloperDTO developerDTO){
-        System.out.print(developerID);
+        this.developerService.updateDeveloper(developerID, developerDTO);
     }
 
     @DeleteMapping(path = "/{developerID}")

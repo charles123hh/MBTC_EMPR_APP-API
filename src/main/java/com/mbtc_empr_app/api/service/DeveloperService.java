@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DeveloperService {
+  
     @Autowired 
     private DeveloperRepository developerRepository;
 
@@ -33,6 +34,22 @@ public class DeveloperService {
 
     public void saveDeveloper(DeveloperDTO developerDTO){
       this.developerRepository.save(DevEntityConversion(developerDTO));
+    }
+
+    public void updateDeveloper(Integer developerID, DeveloperDTO developerDTO){
+      Developer foundDeveloper = this.DevEntityConversion(this.getDeveloper(developerID));
+      foundDeveloper.setEmployeeID(developerDTO.EmployeeID);
+      foundDeveloper.setFirstName(developerDTO.FirstName);
+      foundDeveloper.setMiddleName(developerDTO.MiddleName);
+      foundDeveloper.setLastName(developerDTO.LastName);
+      foundDeveloper.setHomeAddress(developerDTO.HomeAddress);
+      foundDeveloper.setCityProvince(developerDTO.CityProvince);
+      foundDeveloper.setContactNumber(developerDTO.CityProvince);
+      foundDeveloper.setSupervisorID(developerDTO.SupervisorID);
+      foundDeveloper.setDepartmentID(developerDTO.DepartmentID);
+      foundDeveloper.setDateModified(developerDTO.DateModified);
+      foundDeveloper.setModifiedBy(developerDTO.ModifiedBy);
+      this.saveDeveloper(this.DevDTOConversion(foundDeveloper));
     }
 
     public void deleteDeveloper(Integer developerID) { 
