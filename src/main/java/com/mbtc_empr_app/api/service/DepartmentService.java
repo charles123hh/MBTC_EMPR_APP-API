@@ -28,7 +28,6 @@ public class DepartmentService {
         departmentDTO.CreatedBy = department.getCreatedBy();
 		return departmentDTO;
 	}
-
 	public List<DepartmentDTO> DepDTOListConvertsion(List<Department> departments){
 		return departments.stream().map(department -> DepDTOConvertsion(department)).collect(Collectors.toList());
 	}
@@ -41,7 +40,6 @@ public class DepartmentService {
         department.setCreatedBy(departmentDTO.CreatedBy);
 		return department;
 	}
-
 	public List<Department> DepEntityListConvertsion(List<DepartmentDTO> departmentsDTO){
 		return departmentsDTO.stream().map(departmentDTO -> DepEntityConvertsion(departmentDTO)).collect(Collectors.toList());
 	}

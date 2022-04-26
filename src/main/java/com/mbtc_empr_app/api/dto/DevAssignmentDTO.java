@@ -5,32 +5,33 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-public class DeveloperDTO {
+public class DevAssignmentDTO {
+
+    public DevAssignmentDTO() {}
+
     @JsonProperty(access = Access.READ_ONLY)
-    public Integer DeveloperID;
-    
-    public String EmployeeID;
-    public String FirstName;
-    public String MiddleName;
-    public String LastName;
-    public LocalDate DateHire;
+    public Integer DevAssignmentID;
+
+    @JsonProperty(access = Access.WRITE_ONLY)
     public Byte IsActive;
-    public String MetrobankEmail;
-    public String HomeAddress;
-    public String CityProvince;
-    public String ContactNumber;
 
     @JsonProperty(access = Access.WRITE_ONLY)
-    public Integer DepartmentID;
-    
+    public Integer DeveloperID;
+
     @JsonProperty(access = Access.READ_ONLY)
-    public String DepartmentName;
+    public String DeveloperName;
 
     @JsonProperty(access = Access.WRITE_ONLY)
-    public Integer SupervisorID;
+    public Integer ServiceRequestID;
 
     @JsonProperty(access = Access.READ_ONLY)
-    public String SupervisorName;
+    public String ServiceRequestTitle;
+
+    @JsonProperty(access = Access.WRITE_ONLY)
+    public Integer AssignmentTypeID;
+
+    @JsonProperty(access = Access.READ_ONLY)
+    public String AssignmentType;
 
     @JsonProperty(access = Access.WRITE_ONLY)
     public LocalDate DateCreated;
