@@ -3,6 +3,8 @@ package com.mbtc_empr_app.api.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.mbtc_empr_app.api.dto.DevAssignmentDTO;
 import com.mbtc_empr_app.api.service.DevAssignmentService;
 
@@ -28,15 +30,14 @@ public class DevAssignmentController {
         return this.devAssignmentService.getDevAssignments();
 	}
 
+    @Transactional
     @PostMapping
 	public void createDevAssignments(@RequestBody List<DevAssignmentDTO> devAssignmentsDTO) {
-        for(int index = 0; index < devAssignmentsDTO.size(); index++){
-            this.devAssignmentService.saveDevAssignment(devAssignmentsDTO.get(index));
-        }
+        this.devAssignmentService.saveAllDevAssignment(devAssignmentsDTO);
 	}
 
     @DeleteMapping(path = "/{devAssignmentID}")
-    public void deleteDeveloper(@PathVariable("devAssignmentID") Integer devAssignmentID){
+    public void deleteDevAssignment(@PathVariable("devAssignmentID") Integer devAssignmentID){
         this.devAssignmentService.deleteDevAssignment(devAssignmentID);
     }
 }

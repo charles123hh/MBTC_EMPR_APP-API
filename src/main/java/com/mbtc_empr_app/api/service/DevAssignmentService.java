@@ -41,7 +41,11 @@ public class DevAssignmentService {
     }
 
     public void saveDevAssignment(DevAssignmentDTO devAssignmentDTO){
-        this.devAssignmentRepository.save(DevAssignEntityConversion(devAssignmentDTO));
+         this.devAssignmentRepository.save(DevAssignEntityConversion(devAssignmentDTO));
+    }
+    
+    public void saveAllDevAssignment(List<DevAssignmentDTO> devAssignmentsDTO){
+         this.devAssignmentRepository.saveAll(this.DepEntityListConversion(devAssignmentsDTO));
     }
 
     public void deleteDevAssignment(Integer devAssignmentID) { 
